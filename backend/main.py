@@ -6,13 +6,15 @@ from workers.celery_app import celery_app
 from workers.tasks import health_check_task
 import redis
 from sqlalchemy.orm import Session
-from api.routers import auth, users
+from api.routers import auth, users, campaigns, contacts
 
 app = FastAPI(title="Mail Merge Platform API")
 
 api_router = APIRouter()
 api_router.include_router(auth.router, prefix="/auth", tags=["auth"])
 api_router.include_router(users.router, prefix="/users", tags=["users"])
+api_router.include_router(campaigns.router, prefix="/campaigns", tags=["campaigns"])
+api_router.include_router(contacts.router, prefix="/contacts", tags=["contacts"])
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
 
