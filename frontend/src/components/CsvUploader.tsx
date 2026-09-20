@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useRef } from "react";
@@ -47,12 +48,12 @@ export default function CsvUploader() {
   const handleUpload = async () => {
     if (!file) return;
     setStatus("uploading");
-    
+
     // In a real app, you would send this to the backend
     // const formData = new FormData();
     // formData.append("file", file);
     // await fetch('/api/v1/contacts/campaigns/1/upload', { method: 'POST', body: formData });
-    
+
     setTimeout(() => {
       setStatus("success");
     }, 1500);
@@ -60,7 +61,7 @@ export default function CsvUploader() {
 
   return (
     <div className="w-full">
-      <div 
+      <div
         className={`relative border-2 border-dashed rounded-lg p-6 flex flex-col items-center justify-center text-center transition-colors
           ${dragActive ? "border-blue-500 bg-blue-50" : "border-gray-300 hover:bg-gray-50 bg-white"}
           ${status === "success" ? "border-green-500 bg-green-50" : ""}
@@ -91,7 +92,7 @@ export default function CsvUploader() {
         ) : (
           <>
             <UploadCloud className={`h-10 w-10 mb-3 ${dragActive ? "text-blue-500" : "text-gray-400"}`} />
-            
+
             {file ? (
               <div className="flex flex-col items-center w-full">
                 <p className="text-sm font-medium text-gray-900 truncate max-w-[200px] mb-4">{file.name}</p>
@@ -112,7 +113,7 @@ export default function CsvUploader() {
                   or drag and drop
                 </p>
                 <p className="text-xs text-gray-500">CSV files only (max 10MB)</p>
-                
+
                 {status === "error" && (
                   <p className="mt-2 text-sm text-red-600 flex items-center">
                     <AlertCircle className="h-4 w-4 mr-1" />
